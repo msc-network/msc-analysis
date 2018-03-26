@@ -1,0 +1,9 @@
+<h3>Songs</h3>
+<% @songs.map do |song| %>
+  <ul>
+    <li><%= song[:id] %></li>
+    <li><%= song[:title] %></li>
+    <li><%= song[:musical_key] %></li>
+    <li></li>
+  </ul>
+<% end %>
