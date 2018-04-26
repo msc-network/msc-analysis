@@ -14,7 +14,7 @@ end
 set :bind, '0.0.0.0'
 
 get '/' do
-  'base'
+  erb :base
 end
 
 get '/upload' do
@@ -39,6 +39,7 @@ post '/song_key' do
   FileUtils.cp(datafile[:tempfile], filename)
   @song_training = SongKey.new(filename)
   musical_key = @song_training.parse_key
-  @song = Song.create(title: params[:title], musical_key: musical_key[:key])
+  @song = Song.create(artist: params[:artist], title: params[:title], musical_key: musical_key[:key])
   @song
+  erb :result
 end

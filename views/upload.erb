@@ -1,13 +1,21 @@
 <form action="/song_key" method="post" enctype="multipart/form-data">
   <p>
-    <label for="file">File:</label>
-    <input type="file" name="file" />
+    <label class="label" for="file">File:</label>
+    <input class="input" type="file" name="file" />
   </p>
   <p>
-    <label for="title">Title:</label>
-    <input type="text" name="title">
+    <label class="label" for="title">Artist:</label>
+    <input class="input" type="text" name="artist">
   </p>
   <p>
-    <input name="commit" type="submit" value="Upload" />
+    <label class="label" for="title">Title:</label>
+    <input class="input" type="text" name="title">
+  </p>
+  <p>
+    <label class="label" for="title">ISRC:</label>
+    <input class="input" type="text" name="isrc">
+  </p>
+  <p>
+    <input class="button is-info" name="commit" type="submit" value="Upload" />
   </p>
 </form>

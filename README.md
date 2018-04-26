@@ -4,6 +4,12 @@ Mscanalysis is a set of tools for determining characteristics of Audio via code.
 
 ## Install
 
+Make sure aubio is installed
+
+```
+sudo apt-get install aubio-tools libaubio-dev libaubio-doc
+```
+
 Run bundle to install necessary dependencies.
 
 ```
@@ -77,6 +83,8 @@ You are only required to install the standard Aubio binary to use these scripts,
 
 ### Musical Key
 
+Using Aubio
+
 ## TODO - Need help integrating these!
 
 ### Danceability
@@ -88,5 +96,7 @@ You are only required to install the standard Aubio binary to use these scripts,
 ### Loudness
 
 ### Tempo
+
+Possibility to use MiniBPM (https://bitbucket.org/breakfastquay/minibpm)
 
 ### Time Signature
