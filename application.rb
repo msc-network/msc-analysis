@@ -38,8 +38,11 @@ post '/song_key' do
   datafile = params[:file]
   FileUtils.cp(datafile[:tempfile], filename)
   @song_training = SongKey.new(filename)
+  
+  tempo = SongTempo.new(filename).tempo
+
   musical_key = @song_training.parse_key
-  @song = Song.create(artist: params[:artist], title: params[:title], musical_key: musical_key[:key])
+  @song = Song.create(artist: params[:artist], title: params[:title], musical_key: musical_key[:key], tempo: tempo)
   @song
   erb :result
 end

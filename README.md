@@ -62,6 +62,16 @@ ruby get_song_key.rb
 
 The output will guess the key of the song.
 
+#### Get Song Tempo
+
+```ruby
+@song = SongTempo.new '../demo_files/01 - Opening Sequence - Outside (Raining).mp3'
+@song.tempo
+@song.tempo_float
+```
+
+This will output the tempo of the song.
+
 ## Dependencies / Requirements
 
 Aubio
