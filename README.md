@@ -7,7 +7,8 @@ Mscanalysis is a set of tools for determining characteristics of Audio via code.
 Make sure aubio is installed
 
 ```
-sudo apt-get install aubio-tools libaubio-dev libaubio-doc
+sudo apt-get install aubio-tools libaubio-dev libaubio-doc python-dev build-essential
+sudo pip install aubio
 ```
 
 Run bundle to install necessary dependencies.
