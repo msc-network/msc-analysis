@@ -11,6 +11,10 @@ Bundler.require
   require_relative File.join(dir, 'init')
 end
 
+## create temp dir if it does not exist
+tempdir = 'tmp'
+Dir.mkdir(File.join(File.dirname(__FILE__), tempdir)) unless Dir.glob(tempdir)
+
 set :bind, '0.0.0.0'
 
 get '/' do
