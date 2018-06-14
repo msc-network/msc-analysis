@@ -20,7 +20,7 @@ namespace :db do
     STR
 
     timestamp = Time.now.strftime('%Y%m%d%H%M%S')
-    filename = File.join('db/migrations', "#{timestamp}_#{name}.rb")
+    filename = File.join('db/migrations/', "#{timestamp}_#{name}.rb")
     File.write(filename, content)
     puts "Generated: #{filename}"
   end
@@ -55,3 +55,4 @@ namespace :db do
     Sequel::Migrator.apply(DB, 'db/migrations', version)
   end
 end
+

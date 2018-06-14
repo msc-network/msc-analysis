@@ -21,6 +21,11 @@ get '/' do
   erb :base
 end
 
+post '/analyze' do
+  return 'No File Selected' unless params[:file]
+  AnalyzeSong.new(params)
+end
+
 get '/upload' do
   erb :upload
 end

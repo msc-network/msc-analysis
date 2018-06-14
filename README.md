@@ -1,6 +1,6 @@
 ## Mscanalysis
 
-Mscanalysis is a set of tools for determining characteristics of Audio via code.
+Mscanalysis is a set of tools for determining characteristics of Audio and returning them to a user in a meaningful way.
 
 ## Install
 
@@ -81,14 +81,22 @@ Aubio
 
 Currently undergoing heavy development.
 
+## Dependencies
 
-## Aubio
+### Essentia
+
+This software relies on the awesome [Essentia](https://github.com/MTG/essentia) software. All binaries that are needed canbe found in the /bin/ folder along with a copy of the license for Essentia's work.
+
+### Aubio - depreciating
 
 You are only required to install the standard Aubio binary to use these scripts, you may obtain it and the source code from:
 [Github](https://github.com/aubio/aubio/)
 
 
 # Implementations
+
+Going back to square one as Essentia can help with pretty much all of these.
+
 
 ## DONE
 
