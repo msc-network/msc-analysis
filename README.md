@@ -4,6 +4,14 @@ Mscanalysis is a set of tools for determining characteristics of Audio and retur
 
 ## Install
 
+Essentia tools are now bundled in the bin directory. You may need to install the following to function properly:
+
+```sudo apt-get install build-essential libyaml-dev libfftw3-dev libavcodec-dev libavformat-dev libavutil-dev libavresample-dev python-dev libsamplerate0-dev libtag1-dev libchromaprint-dev python-six```
+
+And make sure FFMPEG is installed.
+
+
+
 Make sure aubio is installed
 
 ```
