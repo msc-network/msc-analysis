@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Analyze Songs...
-class AnalyzeSong
+class Analyzer
   # Use essentia instead..
   # Upload file, grab md5 hash, filename and length of file,
   # Query File Model if exists, if true then Query that files Song and return Song attributes * if filled out
@@ -10,32 +10,32 @@ class AnalyzeSong
 
   TEMPDIR = 'tmp'
 
-  attr_accessor :file_md5, :params
+  attr_accessor :file_md5, :params, :song
 
   def initialize(params)
     @params = params
     @file = @params[:file]
     @song = {}
     temp_file params
-    file_md5
-    save_file_details
+    check_file
+    # save_file_details
   end
 
   def analyze
   end
 
-  def file_md5
-    read_file = FileMd5.new(@file)
-    @file_md5 = read_file.call
+  def check_file
+    checked_file = CheckFile.new @file
+    if checked_file.file_exists?
+      # return the files related song
+      @song = checked_file.song
+    else
+      # analyse file and save file and song details.
+    end
   end
 
-  def find_audio_file
-    @audio_file = AudioFile.where(md5: @file_md5)
-  end
-
-  def save_file_details
-    return @audio_file unless find_audio_file
-    AudioFile.create(filename: filename)
+  def save_file_details *opts
+    AudioFile.create(filename: opts[:filename], md5: opts[:md5], file_length: opts[:file_length])
   end
 
   def extract_music_data
