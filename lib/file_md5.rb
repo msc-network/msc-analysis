@@ -9,7 +9,7 @@ class FileMd5
   end
 
   def call
-    result = `../bin/essentia_streaming_md5 "#{@file}"`
+    result = `essentia_streaming_md5 "#{@file}"`
     @md5 = result.split[-1]
   end
 end

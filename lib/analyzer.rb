@@ -10,36 +10,46 @@ class Analyzer
 
   TEMPDIR = 'tmp'
 
-  attr_accessor :file_md5, :params, :song
+  attr_accessor :file_md5, :params, :song, :file_params, :checked_file
 
   def initialize(params)
     @params = params
     @file = @params[:file]
+    @file_params = {}
     @song = {}
-    temp_file params
+    # temp_file params
     check_file
-    # save_file_details
   end
 
   def analyze
   end
 
   def check_file
-    checked_file = CheckFile.new @file
-    if checked_file.file_exists?
+    @checked_file = CheckFile.new @file
+    if @checked_file.file_exists?
       # return the files related song
-      @song = checked_file.song
+      @song = @checked_file.file_record
     else
       # analyse file and save file and song details.
+      song_id = 22
+      write_file_record @file, song_id
     end
   end
 
-  def save_file_details *opts
-    AudioFile.create(filename: opts[:filename], md5: opts[:md5], file_length: opts[:file_length])
+  def write_file_record file, song_id
+    open_file = open @file
+    filename = File.basename @file
+    @file_params = {
+      song_id: song_id,
+      md5: @checked_file.md5,
+      filename: filename,
+      file_length: open_file.size,
+    }
+    AudioFile.create(@file_params)
   end
 
   def extract_music_data
-    `essentia_streaming_extractor_music "#{@file}" "#{temp/}"`
+    `essentia_streaming_extractor_music "#{@file}" "#{temp}"`
   end
 
   def temp_file params
