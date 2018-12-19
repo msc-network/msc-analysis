@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 require 'sinatra'
+require "sinatra/namespace"
 require 'bundler'
 require 'fileutils'
+
+register Sinatra::Namespace
 
 Bundler.require
 
@@ -13,7 +16,10 @@ end
 
 ## create temp dir if it does not exist
 tempdir = 'tmp'
-Dir.mkdir(File.join(File.dirname(__FILE__), tempdir)) unless Dir.glob(tempdir)
+if Dir.glob(tempdir).length < 1
+  Dir.mkdir(File.join(File.dirname(__FILE__), tempdir))
+end
+
 
 set :bind, '0.0.0.0'
 
@@ -54,4 +60,13 @@ post '/song_key' do
   @song = Song.create(artist: params[:artist], title: params[:title], musical_key: musical_key[:key], tempo: tempo)
   @song
   erb :result
+end
+
+# Api version
+namespace '/api' do
+  namespace '/v1' do
+    get '/test' do
+      "Hello World!"
+    end
+  end
 end
